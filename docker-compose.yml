@@ -13,14 +13,22 @@ services:
   api:
     build: ./apps/api
     env_file: .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://seo:seo_password@postgres:5432/seo_monitor
+      REDIS_URL: redis://redis:6379/0
     depends_on: [postgres, redis]
     ports: ["8000:8000"]
   worker:
     build: ./apps/worker
     env_file: .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://seo:seo_password@postgres:5432/seo_monitor
+      REDIS_URL: redis://redis:6379/0
     depends_on: [postgres, redis]
   web:
-    build: ./apps/web
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
     env_file: .env
     depends_on: [api]
     ports: ["3000:3000"]

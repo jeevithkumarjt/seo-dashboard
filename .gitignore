@@ -13,3 +13,5 @@ postgres-data/
 redis-data/
 storage/
 playwright-report/
+build.log
+build.err

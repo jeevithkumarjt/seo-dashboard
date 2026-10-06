@@ -107,9 +107,13 @@ cp .env.example .env
 # Every key is optional. Add only the free credentials you actually have.
 
 docker compose up --build
+docker compose exec api python -m app.init_db
 ```
 
 Open http://localhost:3000.
+
+The second command creates the tables (and the TimescaleDB extension). It only needs
+to be run once.
 
 `.env.example` lists everything. What you might want to set:
 
