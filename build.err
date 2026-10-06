@@ -1,0 +1,25 @@
+ Image seo-dashboard-api Building 
+ Image seo-dashboard-worker Building 
+ Image seo-dashboard-web Building 
+Dockerfile:5
+
+--------------------
+
+   3 |     RUN corepack enable
+
+   4 |     COPY package.json pnpm-lock.yaml* pnpm-workspace.yaml turbo.json ./
+
+   5 | >>> COPY apps/web/package.json apps/web/package.json
+
+   6 |     RUN pnpm install --filter web...
+
+   7 |     COPY . .
+
+--------------------
+
+target web: failed to solve: failed to compute cache key: failed to calculate checksum of ref m3lth53bmlgzrizp936f5c97o::pr96vk937njfsugqlplzwyapx: "/apps/web/package.json": not found
+
+
+
+View build details: docker-desktop://dashboard/build/default/default/pkc09tc6wqmue73wpnpapmx4p
+
